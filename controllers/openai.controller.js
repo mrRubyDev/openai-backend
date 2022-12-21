@@ -8,7 +8,6 @@ const openai = new OpenAIApi(configuration);
 
 const generateTweet = async (req, res) => {
   const { text, prompt, temperature } = req.body;
-  console.log("Request body", req.body);
   try {
     const response = await openai.createCompletion({
       model: "text-davinci-003",
