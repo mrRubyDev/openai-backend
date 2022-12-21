@@ -7,13 +7,13 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration);
 
 const generateTweet = async (req, res) => {
-  const { text, prompt } = req.body;
+  const { text, prompt, temperature } = req.body;
   console.log("Request body", req.body);
   try {
     const response = await openai.createCompletion({
       model: "text-davinci-003",
       prompt: `${prompt} ${text}`,
-      temperature: 0.5,
+      temperature,
       max_tokens: 256,
       top_p: 1,
       frequency_penalty: 0,
